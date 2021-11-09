@@ -1,12 +1,14 @@
 import './App.css';
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 const naverMap = window.naver.maps;
 let map = '';
 let mapOptions = {
-  center: { lat: 37.3595953, lng: 127.1053971 },
-  zoom: 13,
+  center: { lat: 34.999027, lng: 126.792920  },
+  zoom: 20,
   mapTypeId: naverMap.MapTypeId.SATELLITE,
 };
 let cadastralLayer = new naverMap.CadastralLayer();
@@ -14,18 +16,30 @@ let cadastralLayer = new naverMap.CadastralLayer();
 function App() {
   useEffect(() => {
     map = new naverMap.Map('map', mapOptions);
+    axios.get('https://b.aircondition.viasofts.com/measure/api/date/2021-11-03/2021-11-04')
+    .then((result) => {
+      result.data.map((data)=>{
+        let latlngAltitude = data.latlng_altitude;
+        let tempArray = latlngAltitude.split(",");
 
-    let circle = new naverMap.Circle({
-      map: map,
-      center: { lat: 37.3595953, lng: 127.1053971 },
-      radius: 500,
+        console.log(tempArray[0],tempArray[1]);
 
-      strokeColor: '#5347AA',
-      strokeOpacity: 0.5,
-      strokeWeight: 2,
-      fillColor: '#E51D1A',
-      fillOpacity: 0.7
+        let circle = new naverMap.Circle({
+          map: map,
+          center: { lat: tempArray[0], lng: tempArray[1] },
+          radius: 10,
+    
+          strokeColor: '#5347AA',
+          strokeOpacity: 0.5,
+          strokeWeight: 2,
+          fillColor: '#E51D1A',
+          fillOpacity: 0.7
+        });
+      })
     });
+    
+
+    
 
   });
 
