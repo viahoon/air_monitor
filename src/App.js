@@ -244,9 +244,9 @@ function App() {
 
             <div style={{ marginLeft: '30px' }}>
               <span style={{ color: 'white' }}>시작날짜 : </span>
-              <input type='date' id='startDate' value={startDate}></input>
+              <input type='date' id='startDate'></input>
               <span style={{ color: 'white', marginLeft: '20px' }}>종료날짜 : </span>
-              <input type='date' id='endDate' value={endDate}></input>
+              <input type='date' id='endDate'></input>
               <span style={{ color: 'white', marginLeft: '20px' }}>기기번호 : </span>
               <select onChange={(e)=>{
                 let startDate = document.getElementById('startDate');
@@ -307,6 +307,23 @@ function App() {
             };
           }}
         />
+      </div>
+      <div style={{ position: 'fixed', bottom: '10px', left: '10px' }}>
+        <table>
+          <tr>
+            <td width="100" height="50" bgcolor="#32a1ff"><b>좋음</b></td>
+          </tr>
+          <tr>
+            <td width="100" height="50" bgcolor="#00c73c"><b>보통</b></td>
+          </tr>
+          <tr>
+            <td width="100" height="50" bgcolor="#fd9b5a"><b>나쁨</b></td>
+          </tr>
+          <tr>
+            <td width="100" height="50" bgcolor="#ff5959"><b>매우나쁨</b></td>
+          </tr>
+
+        </table>
       </div>
     </div>
   );
