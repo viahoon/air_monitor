@@ -162,6 +162,7 @@ function App() {
           cal_value_01 = cal_value_01.toFixed(3);
 
           let colorValue;
+          let txtValue;
           // 복합악취의 경우
           // if (cal_value_01 < 12) {
           //   colorValue = '#00FF00';
@@ -174,12 +175,16 @@ function App() {
           //미세먼지10
           if (measure_result.A8 >= 0 && measure_result.A8 <= 30) {
             colorValue = '#32a1ff';
+            txtValue = '좋음';
           } else if (measure_result.A8 > 30 && measure_result.A8 <= 80) {
             colorValue = '#00c73c';
+            txtValue = '보통';
           } else if (measure_result.A8 > 80 && measure_result.A8 <= 150) {
             colorValue = '#fd9b5a';
+            txtValue = '나쁨';
           } else if (measure_result.A8 > 150) {
             colorValue = '#ff5959';
+            txtValue = '매우나쁨';
           }
 
           let circle = new naverMap.Circle({
@@ -204,7 +209,7 @@ function App() {
               lat: tempPosition[0],
               lng: tempPosition[1],
               cal_value_01: cal_value_01,
-              cal_value_02: measure_result.A8,
+              cal_value_02: measure_result.A8 + ' (' + txtValue + ')',
               cal_value_03: measure_result.A7,
             }
           )
