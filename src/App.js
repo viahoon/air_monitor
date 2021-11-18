@@ -32,6 +32,10 @@ const columns = [
     dataIndex: 'cal_value_02',
   },
   {
+    title: '초미세먼지',
+    dataIndex: 'cal_value_03',
+  },
+  {
     title: '복합악취',
     dataIndex: 'cal_value_01',
   },
@@ -201,6 +205,7 @@ function App() {
               lng: tempPosition[1],
               cal_value_01: cal_value_01,
               cal_value_02: measure_result.A8,
+              cal_value_03: measure_result.A7,
             }
           )
         })
